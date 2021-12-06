@@ -1,48 +1,47 @@
 <template>
   <div id="app">
-    <template>
+        <template>
       <b-navbar type="is-light">
           <template #start>
              <b-breadcrumb class="ml-3 mt-5" size="is-size-6" type="is-light" align="is-left">
-                <b-breadcrumb-item class="breadcrumb" >Ken Kraft</b-breadcrumb-item>
+                <b-breadcrumb-item class="breadcrumb has-text-weight-bold" >Ken Kraft</b-breadcrumb-item>
                 <b-breadcrumb-item class="breadcrumb" >Leadership and Development</b-breadcrumb-item>
             </b-breadcrumb>
           </template>
           <template #end>
               <b-navbar-item href="#">
-                  Home
+                   <router-link class="has-text-dark" to="/">Home</router-link>
               </b-navbar-item>
               <b-navbar-item href="#">
-                  Manager Moments
+                   <router-link class="has-text-dark" to="/blog">Manager Moments</router-link>
               </b-navbar-item>
               <b-navbar-item href="#">
-                  Resume
+                   <router-link class="has-text-dark" to="/resume">Resume</router-link>
               </b-navbar-item>
-              <b-navbar-dropdown label="Info">
+              <b-navbar-dropdown class="has-text-dark" label="Info">
                   <b-navbar-item href="#">
-                      About
+                       <router-link class="has-text-dark" to="/aboutme">About</router-link>
                   </b-navbar-item>
                   <b-navbar-item href="#">
-                      Contact
+                       <router-link class="has-text-dark" to="/aboutme">Contact</router-link>
                   </b-navbar-item>
               </b-navbar-dropdown>
           </template>
       </b-navbar>
     </template>
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-    <Home/>
+    <!-- <Home/> -->
+    <router-view/>
   </div>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
-import Home from './components/Home.vue'
+// import Home from './components/Home.vue'
 
 export default {
   name: 'App',
   components: {
-    // HelloWorld, 
-    Home
+    // Home
   }
 }
 </script>
@@ -63,4 +62,16 @@ export default {
   background-color:#F1FAEE !important;
 } */
 
+#nav {
+  padding: 30px;
+}
+
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+#nav a.router-link-exact-active {
+  color: #42b983;
+}
 </style>
