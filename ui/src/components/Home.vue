@@ -25,13 +25,18 @@
             </div>
         </div>
     </div>
+    <contact-form/>
 
 </div>
 
 </template>
 
 <script>
+import ContactForm from './ContactForm.vue';
 export default {
+    components: {
+        ContactForm
+    }
 
 }
 </script>
