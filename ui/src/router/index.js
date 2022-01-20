@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Blog from '../components/Blog.vue'
 import Home from '../components/Home.vue'
+import Portal from '../components/Portal.vue'
 import About from '../views/About.vue'
 // import Resume from '../views/Resume.vue'
 
@@ -22,6 +23,11 @@ const routes = [
     path: '/aboutme',
     name: 'About Me',
     component: About
+  },
+  {
+    path: '/admin',
+    name: 'admin',
+    component: Portal
   }
   // {
   //   path: '/resume',
