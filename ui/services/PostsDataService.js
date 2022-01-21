@@ -9,7 +9,8 @@ class TutorialDataService {
     return http.get(`/posts/${id}`);
   }
 
-  create(data) {
+  createPost(data) {
+    console.log(data)
     return http.post("/posts", data);
   }
 
