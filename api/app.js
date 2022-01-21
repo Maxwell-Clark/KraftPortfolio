@@ -42,7 +42,6 @@ db.connect((err) => {
 //insert post
 app.post('/posts', jsonParser, (req, res) => {
     let post = req.body
-    console.log('got here!', post)
     // let post = {title:"First Post", body: "this is the first text post"};
     let sql = 'INSERT INTO posts SET ?';
     db.query(sql, {title: post.title, body: post.post}, (err, result) => {
