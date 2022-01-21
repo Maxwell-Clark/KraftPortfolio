@@ -3,20 +3,20 @@
       <div v-if="!formSubmitted" class="form_parent">
           <form class="form">
             <label>Title</label>
-            <input type="text" placeholder="Title" v-model="name">
+            <input type="text" placeholder="Title" v-model="title">
             <label>Subtitle</label>
-            <input type="text" placeholder="Subtitle" v-model="phone">
+            <input type="text" placeholder="Subtitle" v-model="subtitle">
             <label>Picture</label> 
             <!-- something that would be really cool is if we allowed the user to pick a slot where they could insert a picture in the post -->
             <!-- drag and drop most likely -->
-            <input type="text" placeholder="Picture" v-model="email">
+            <input type="text" placeholder="Picture" v-model="picture">
             <label>Video</label>
             <!-- probably a link -->
-            <input type="text" placeholder="Video" v-model="email"> 
+            <input type="text" placeholder="Video" v-model="video"> 
             <label>Message</label>
-            <textarea name="message" id="" cols="30" rows="10" v-model="message" placeholder="Enter your Post"></textarea>
+            <textarea name="message" id="" cols="30" rows="10" v-model="post" placeholder="Enter your Post"></textarea>
             <!-- <input type="textarea" rows="4" cols="50" placeholder="MSG"> -->
-            <input id="submit" @click="submit" type="Submit" >
+            <input id="submit" @click.prevent="submit" type="Submit" >
           </form>
       </div>
       <div v-if="formSubmitted" class="form_parent">
@@ -31,22 +31,26 @@
 export default {
     data() {
         return {
-            name: null,
-            phone: null,
-            email: null,
-            message: null,
+            title: null,
+            subtitle: null,
+            picture: null,
+            video: null,
+            post: null,
             formSubmitted: false,
             adminIsVerified: false //need to verify that the admin is actually who they say they are.
         }
     },
     methods: {
         submit() {
-            // let formData = {
-            //     name: this.name,
-            //     phone: this.phone,
-            //     email: this.email,
-            //     message: this.message
-            // }
+            let formData = {
+                title: this.title,
+                subtitle: this.subtitle,
+                picture: this.picture,
+                video: this.video,
+                post: this.post,
+            }
+            console.log(formData)
+            this.$store.dispatch('createPost', formData)
             //hit the store call to submit the form and send the email
         }
     }

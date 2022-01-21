@@ -1,7 +1,27 @@
 const express = require('express');
 const mysql = require('mysql');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+
 
 const app = express();
+
+const corsOpts = {
+    origin: "*",
+
+    methods: [
+        'GET',
+        'POST'
+    ],
+
+    allowedHeaders: [
+        'Content-Type'
+    ]
+};
+
+app.use(cors(corsOpts));
+
+let jsonParser = bodyParser.json();
 
 // Create connection
 const db = mysql.createConnection({
@@ -20,15 +40,16 @@ db.connect((err) => {
 })
 
 //insert post
-app.post('/posts', (req, res) => {
-    // let post = req.body
-    let post = {title:"First Post", body: "this is the first text post"};
+app.post('/posts', jsonParser, (req, res) => {
+    let post = req.body
+    console.log('got here!', post)
+    // let post = {title:"First Post", body: "this is the first text post"};
     let sql = 'INSERT INTO posts SET ?';
-    db.query(sql, post, (err, result) => {
+    db.query(sql, {title: post.title, body: post.post}, (err, result) => {
         if(err) {
             throw err;
         } 
-        res.send('Post 1 added...')
+        res.send(`${post.title} Post added...`)
     })
 })
 
