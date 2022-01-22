@@ -16,7 +16,7 @@
             <label>Message</label>
             <textarea name="message" id="" cols="30" rows="10" v-model="post" placeholder="Enter your Post"></textarea>
             <!-- <input type="textarea" rows="4" cols="50" placeholder="MSG"> -->
-            <input id="submit" @click.prevent="submit" type="Submit" >
+            <input id="submit" @click="submit" type="Submit" >
           </form>
       </div>
       <div v-if="formSubmitted" class="form_parent">
